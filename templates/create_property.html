@@ -1,0 +1,173 @@
+{% extends "index.html" %}
+{% block css_block %}
+
+<style>
+    /* Custom Checkbox Styles */
+    .checkbox-container input[type="checkbox"] {
+        width: 1.25rem;
+        height: 1.25rem;
+        margin-right: 0.5rem;
+    }
+
+    /* Font Families */
+    body {
+        font-family: 'Arial', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Verdana', sans-serif;
+    }
+
+    /* Other CSS styles... */
+</style>
+{% endblock css_block %}
+{% block content %}
+
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Create Property</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="district">District:</label>
+                <select name="district" id="district" class="border border-gray-300 rounded p-2 w-full">
+                    <option value="">Select District</option>
+                    {% for district in districts %}
+                    <option value="{{ district.id }}">{{ district.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="detailed_location">Detailed Location:</label>
+                <input type="text" name="detailed_location" id="detailed_location"
+                    class="border border-gray-300 rounded p-2 w-full" required>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="title">Title:</label>
+                <input type="text" name="title" id="title" class="border border-gray-300 rounded p-2 w-full" required>
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="gmail">Email:</label>
+                <input type="email" name="gmail" id="gmail" class="border border-gray-300 rounded p-2 w-full"
+                    value="{{ request.user.email}}" required>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="phone">Phone:</label>
+                <input type="text" name="phone" id="phone" class="border border-gray-300 rounded p-2 w-full"
+                    value="{{ request.user.phone}}" required>
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="rent">Rent:</label>
+                <input type="number" name="rent" id="rent" class="border border-gray-300 rounded p-2 w-full" required>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="negotiable">Negotiable:</label>
+                <input type="checkbox" name="negotiable" id="negotiable" class="border-gray-300 rounded" value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="advance_deposit">Advance Deposit:</label>
+                <input type="number" name="advance_deposit" id="advance_deposit"
+                    class="border border-gray-300 rounded p-2 w-full" required>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-bold mb-2" for="images">Images:</label>
+            <input type="file" name="images" id="images" class="border border-gray-300 rounded p-2 w-full" multiple>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="bedrooms">Bedrooms:</label>
+                <input type="number" name="bedrooms" id="bedrooms" class="border border-gray-300 rounded p-2 w-full"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="bathrooms">Bathrooms:</label>
+                <input type="number" name="bathrooms" id="bathrooms" class="border border-gray-300 rounded p-2 w-full"
+                    required>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-bold mb-2" for="description">Description:</label>
+            <textarea name="description" id="description" rows="5" class="border border-gray-300 rounded p-2 w-full"
+                required></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="kitchen">Kitchen:</label>
+                <input type="checkbox" name="kitchen" id="kitchen" class="border-gray-300 rounded" value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="kitchen">Bachelor Allowed:</label>
+                <input type="checkbox" name="bachelor_allowed" id="bachelor_allowed" class="border-gray-300 rounded"
+                    value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="floor_number">Floor Number:</label>
+                <input type="number" name="floor_number" id="floor_number"
+                    class="border border-gray-300 rounded p-2 w-full" required>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="block font-bold mb-2" for="condition">Condition:</label>
+            <select name="condition" id="condition" class="border border-gray-300 rounded p-2 w-full" required>
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="average">Average</option>
+            </select>
+        </div>
+
+        <h2 class="text-xl font-bold mb-4">Features/Amenities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="electricity">Electricity:</label>
+                <input type="checkbox" name="electricity" id="electricity" class="border-gray-300 rounded" value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="gas">Gas:</label>
+                <input type="checkbox" name="gas" id="gas" class="border-gray-300 rounded" value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="wifi">Wifi:</label>
+                <input type="checkbox" name="wifi" id="wifi" class="border-gray-300 rounded" value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="elevator">Elevator:</label>
+                <input type="checkbox" name="elevator" id="elevator" class="border-gray-300 rounded" value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="security_guard">Security Guard:</label>
+                <input type="checkbox" name="security_guard" id="security_guard" class="border-gray-300 rounded"
+                    value="1">
+            </div>
+            <div class="mb-4">
+                <label class="block font-bold mb-2" for="cctv">CCTV:</label>
+                <input type="checkbox" name="cctv" id="cctv" class="border-gray-300 rounded" value="1">
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create
+                Property</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
