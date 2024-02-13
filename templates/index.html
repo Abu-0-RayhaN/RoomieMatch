@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rentopia</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
     <link rel="icon" href="{% static 'images/home.png' %}" type="image/png">
      {% tailwind_css %}
      {% block css_block %}
@@ -26,7 +26,7 @@
 <body>
 <nav class="md:flex md:items-center md:justify-between md:h-auto h-96 ">
     <div class="flex justify-between items-center">
-        <span class="text-2xl font-serif font-bold cursor-pointer flex justify-center items-center">
+        <span class="text-2xl font-serif font-bold cursor-pointer flex justify-center items-center px-6 py-2">
                     <img class="h-16 inline" src="{% static 'images/home.png' %}" >
                     Rentopia
                 </span>
@@ -36,7 +36,7 @@
             </div>
 
             <ul
-                class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 text-sm">
+                class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 text-sm px-6">
                 <li class="mx-4 my-6 md:my-0">
                     <a href="{% url 'index' %}" class="text-xl hover:text-cyan-500 duration-500">Home</a>
                 </li>
