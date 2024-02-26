@@ -1,4 +1,4 @@
-{% load static tailwind_tags %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,9 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rentopia</title>
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> -->
     <link rel="icon" href="{% static 'images/home.png' %}" type="image/png">
-     {% tailwind_css %}
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
      {% block css_block %}
      
      {% endblock css_block %}
@@ -21,14 +20,15 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
 </head>
 
 <body>
-<nav class="md:flex md:items-center md:justify-between md:h-auto h-96 ">
+<nav class="md:flex md:items-center md:justify-between h-auto">
     <div class="flex justify-between items-center">
         <span class="text-2xl font-serif font-bold cursor-pointer flex justify-center items-center px-6 py-2">
                     <img class="h-16 inline" src="{% static 'images/home.png' %}" >
-                    Rentopia
+                    RoomieMatch
                 </span>
                 <span class="text-3xl cursor-pointer mx-2 md:hidden block">
                  <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
@@ -38,26 +38,19 @@
             <ul
                 class="md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 text-sm px-6">
                 <li class="mx-4 my-6 md:my-0">
-                    <a href="{% url 'index' %}" class="text-xl hover:text-cyan-500 duration-500">Home</a>
+                    <a href="{% url 'index' %}" class="text-xl hover:text-red-500 duration-500">Home</a>
                 </li>
                 <li class="mx-4 my-6 md:my-0">
-                    <a href="{% url 'rental_home' %}" class="text-xl hover:text-cyan-500 duration-500">Rental</a>
+                    <a href="{% url 'rental_home' %}" class="text-xl hover:text-red-500 duration-500">Rental</a>
                 </li>
                 <li class="mx-4 my-6 md:my-0">
-                    <a href="{% url 'roommate' %}" class="text-xl hover:text-cyan-500 duration-500">Find A Roommate</a>
+                    <a href="{% url 'roommate' %}" class="text-xl hover:text-red-500 duration-500">Find A Roommate</a>
                 </li>
                 <li class="mx-4 my-6 md:my-0">
-                    <a href="#" class="text-xl hover:text-cyan-500 duration-500">Agent</a>
+                    <a href="#" class="text-xl hover:text-red-500 duration-500">Agent</a>
                 </li>
-                <li class="mx-4 my-6 md:my-0">
-                    <a href="#" class="text-xl hover:text-cyan-500 duration-500">Contact</a>
-                </li>
-                <li class="mx-4 my-6 md:my-0">
-                    <a href="#" class="text-xl hover:text-cyan-500 duration-500">Login</a>
-                </li>
-
                 <button
-                    class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded ">
+                    class="bg-blue-500 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded text-md">
                     Sign Up
                 </button>
                 <h2 class=""></h2>
