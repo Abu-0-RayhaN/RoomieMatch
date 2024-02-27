@@ -1,16 +1,20 @@
-from django.shortcuts import render
+from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
+
+
 def index(request):
-    return render(request,'index.html')
+    return render(request, 'index.html')
+
 
 User = get_user_model()
 
-from django.contrib import messages
 
 def signup(request):
     if request.method == 'POST':
@@ -20,7 +24,8 @@ def signup(request):
         password2 = request.POST.get('confirm_password')
         phone = request.POST.get('phone')
         nid = request.POST.get('nid')
-        profile_picture = request.FILES.get('profile_picture')  # Get the uploaded profile picture file
+        # Get the uploaded profile picture file
+        profile_picture = request.FILES.get('profile_picture')
 
         # Check if the username is unique
         if User.objects.filter(username=username).exists():
@@ -36,12 +41,12 @@ def signup(request):
         if User.objects.filter(nid=nid).exists():
             messages.error(request, 'User with this NID already exists')
             return render(request, 'signup.html')
-        
-        #Passwords don't match, handle the error
+
+        # Passwords don't match, handle the error
         if password1 != password2:
             messages.error(request, 'Passwords do not match')
             return render(request, 'signup.html')
-        
+
         # Create a new user object
         user = User(email=email, username=username, phone=phone, nid=nid)
 
@@ -57,14 +62,11 @@ def signup(request):
         # login(request, user)
 
         # Redirect to a success page or any other desired page
-        messages.success(request,"Successfully Signed Up!")
+        messages.success(request, "Successfully Signed Up!")
         return redirect('auth_login')
 
     return render(request, 'signup.html')
 
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
 
 def login_view(request):
     if request.method == 'POST':
@@ -83,18 +85,18 @@ def login_view(request):
 
         if user is not None:
             # User found, authenticate with the provided password
-            authenticated_user = authenticate(request, username=user.email, password=password)
+            authenticated_user = authenticate(
+                request, username=user.email, password=password)
             if authenticated_user is not None:
                 # Authentication successful, log in the user
                 login(request, authenticated_user)
                 return redirect('index')
-        
+
         # Authentication failed, display an error message
         messages.error(request, 'Invalid email/phone number or password')
 
     return render(request, 'login.html')
 
-from django.contrib.auth import logout
 
 def logout_view(request):
     logout(request)

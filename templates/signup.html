@@ -7,7 +7,7 @@
 </script>
 {% endblock js_block %}
 {% block content %}
-<div class="w-full max-w-md p-8 space-y-3 rounded-xl dark:text-gray-100 mx-auto my-10 bg-black text-white">
+<div class="w-full max-w-md p-8 space-y-3 rounded-xl dark:text-gray-100 mx-auto my-10 bg-blue-600 text-black">
     <h1 class="text-2xl font-bold text-center">Sign Up</h1>
      {% if messages %}
     <div class="bg-red-500 text-white p-4 rounded-md flex items-center justify-between">
@@ -29,39 +29,39 @@
         <div class="space-y-1 text-sm">
             <label for="username" class="block dark:text-gray-400">Username</label>
             <input type="text" name="username" id="username" placeholder="Username"
-                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black">
+                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black outline-none">
         </div>
         <div class="space-y-1 text-sm">
             <label for="phone" class="block dark:text-gray-400">Phone</label>
             <input type="text" name="phone" id="phone" placeholder="Phone"
-                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black">
+                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black outline-none">
         </div>
         <div class="space-y-1 text-sm">
             <label for="email" class="block dark:text-gray-400">Email</label>
             <input type="email" name="email" id="email" placeholder="Email"
-                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black">
+                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black outline-none">
         </div>
         <div class="space-y-1 text-sm">
             <label for="nid" class="block dark:text-gray-400">NID</label>
             <input type="text" name="nid" id="nid" placeholder="NID"
-                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black">
+                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black outline-none">
         </div>
         <div class="space-y-1 text-sm">
             <label for="password" class="block dark:text-gray-400">Password</label>
             <input type="password" name="password" id="password" placeholder="Password"
-                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black">
+                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black outline-none">
         </div>
         <div class="space-y-1 text-sm">
             <label for="confirm" class="block dark:text-gray-400">Confirm Password</label>
             <input type="password" name="confirm_password" id="confirm" placeholder="Confirm Password"
-                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black">
+                class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black outline-none">
         </div>
         <div class="space-y-1 text-sm">
             <label for="profile_picture" class="block dark:text-gray-400">Profile Picture</label>
             <input type="file" name="profile_picture" id="profile_picture" placeholder="Profile Picture"
                 class="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400 text-black">
         </div>
-        <button type="submit" class="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 text-white">Sign Up</button>
+        <button type="submit" class="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400 text-white bg-blue-800 hover:bg-blue-700">Sign Up</button>
     </form>
     <p class="text-xs text-center sm:px-6 dark:text-gray-400">Already have an account? <a rel="noopener noreferrer" href="{% url 'auth_login' %}" class="underline dark:text-gray-100">Log in</a></p>
     <div class="flex items-center pt-4 space-x-1">
