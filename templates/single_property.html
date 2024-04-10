@@ -1,0 +1,49 @@
+<!-- single_property.html -->
+
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mx-auto mt-8">
+    <h1 class="text-3xl font-semibold mb-4">{{ property.title }}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+            <!-- Property Images -->
+            <div class="mb-4">
+                {% for image in images %}
+                <img src="{{ image.image.url }}" alt="Property Image" class="w-full mb-2 rounded-lg shadow-md">
+                {% endfor %}
+            </div>
+            <!-- Other Property Details -->
+            <div>
+                <h2 class="text-xl font-semibold mb-2">Property Details:</h2>
+                <ul class="list-disc ml-6">
+                    <li>Location: {{ property.detailed_location }}</li>
+                    <li>Rent: ${{ property.rent }}</li>
+                    <li>Advance Deposit: ${{ property.advance_deposit }}</li>
+                    <li>Bedrooms: {{ property.bedrooms }}</li>
+                    <li>Bathrooms: {{ property.bathrooms }}</li>
+                    <li>Floor Number: {{ property.floor_number }}</li>
+                    <!-- Add more property details as needed -->
+                </ul>
+            </div>
+        </div>
+        <div>
+            <!-- Description -->
+            <div class="mb-4">
+                <h2 class="text-xl font-semibold mb-2">Description:</h2>
+                <p>{{ property.description }}</p>
+            </div>
+            <!-- Features -->
+            <div>
+                <h2 class="text-xl font-semibold mb-2">Features:</h2>
+                <ul class="list-disc ml-6">
+                    <li>Wifi: {% if property.wifi %}Included{% else %}Not Included{% endif %}</li>
+                    <li>Kitchen: {% if property.kitchen %}Available{% else %}Not Available{% endif %}</li>
+                    <li>Electricity: {% if property.electricity %}Included{% else %}Not Included{% endif %}</li>
+                    <li>Gas: {% if property.gas %}Included{% else %}Not Included{% endif %}</li>
+                    <!-- Add more features as needed -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

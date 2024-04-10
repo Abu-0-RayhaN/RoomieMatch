@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import District, Property, PropertyImage
 
 
@@ -85,3 +85,15 @@ def create_property(request):
     districts = District.objects.all()
     context = {'districts': districts}
     return render(request, 'create_property.html', context)
+
+def view_single_property(request, slug):
+    # Retrieve the property using the slug
+    property = get_object_or_404(Property, title_slug=slug)
+    # Retrieve property images
+    images = PropertyImage.objects.filter(property=property)
+
+    context = {
+        'property': property,
+        'images': images
+    }
+    return render(request, 'single_property.html', context)
