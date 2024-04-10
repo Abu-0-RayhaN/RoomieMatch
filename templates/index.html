@@ -44,7 +44,7 @@
         >
          <a href="/">
             <img class="h-16 inline" src="{% static 'images/home.png' %}" />
-            RoomieMatch
+            Rentopia
          </a>
         </span>
         <span class="text-3xl cursor-pointer mx-2 md:hidden block">
@@ -64,16 +64,16 @@
         </li>
         <li class="mx-4 my-6 md:my-0">
           <a
-            href="{% url 'rental_home' %}"
+            href="{% url 'create_ad' %}"
             class="text-lg hover:text-red-500 duration-500"
-            >Rental</a
+            >post Ad</a
           >
         </li>
         <li class="mx-4 my-6 md:my-0">
           <a
-            href="{% url 'roommate' %}"
+            href="{% url 'rental_home' %}"
             class="text-lg hover:text-red-500 duration-500"
-            >Find A Roommate</a
+            >find a roommate</a
           >
         </li>
         <li class="mx-4 my-6 md:my-0">
@@ -85,7 +85,7 @@
           {% if user.is_authenticated %}
           <a href="{% url 'auth_logout' %}" onclick="return confirm('you sure to logout?')"> Log Out</a>
           {% else %}
-          <a href="{% url 'signup' %}" > sign up/in</a>
+          <a href="{% url 'auth_login' %}" > sign up/in</a>
         
           {% endif %}
 

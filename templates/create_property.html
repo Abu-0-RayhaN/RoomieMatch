@@ -29,13 +29,13 @@
 {% block content %}
 
 <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Create Property</h1>
+    <h1 class="text-2xl font-bold mb-4">Create Ad</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="district">District:</label>
-                <select name="district" id="district" class="border border-gray-300 rounded p-2 w-full">
+                <select name="district" id="district" class="border border-gray-300 rounded p-2 w-full outline-none" required>
                     <option value="">Select District</option>
                     {% for district in districts %}
                     <option value="{{ district.id }}">{{ district.name }}</option>
@@ -45,109 +45,108 @@
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="detailed_location">Detailed Location:</label>
                 <input type="text" name="detailed_location" id="detailed_location"
-                    class="border border-gray-300 rounded p-2 w-full" required>
+                    class="border border-gray-300 rounded p-2 w-full outline-none" placeholder="e.g: 28th road, 7th block, East Razar Bazar,Farmgate,Tegjaon,Dhaka" required>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="title">Title:</label>
-                <input type="text" name="title" id="title" class="border border-gray-300 rounded p-2 w-full" required>
+                <input type="text" name="title" id="title" class="border border-gray-300 rounded p-2 w-full outline-none" placeholder="Roommate needed who is...." required>
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="gmail">Email:</label>
-                <input type="email" name="gmail" id="gmail" class="border border-gray-300 rounded p-2 w-full"
-                    value="{{ request.user.email}}" required>
+                <input type="email" name="gmail" id="gmail" class="border border-gray-300 rounded p-2 w-full outline-none"
+                    value="{{ request.user.email}}" placeholder="gmail@gmail.com" required>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="phone">Phone:</label>
-                <input type="text" name="phone" id="phone" class="border border-gray-300 rounded p-2 w-full"
-                    value="{{ request.user.phone}}" required>
+                <input type="text" name="phone" id="phone" class="border border-gray-300 rounded p-2 w-full outline-none "
+                    value="{{ request.user.phone}}" placeholder="01xxxxxxx" required>
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="rent">Rent:</label>
-                <input type="number" name="rent" id="rent" class="border border-gray-300 rounded p-2 w-full" required>
+                <input type="number" name="rent" id="rent" class="border border-gray-300 rounded p-2 w-full outline-none" required placeholder="3000tk">
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="negotiable">Negotiable:</label>
-                <input type="checkbox" name="negotiable" id="negotiable" class="border-gray-300 rounded" value="1">
+                <input type="checkbox" name="negotiable" id="negotiable" class="border-gray-300 rounded outline-none" value="1">
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="advance_deposit">Advance Deposit:</label>
                 <input type="number" name="advance_deposit" id="advance_deposit"
-                    class="border border-gray-300 rounded p-2 w-full" required>
+                    class="border border-gray-300 rounded p-2 w-full outline-none" required placeholder="3000tk">
             </div>
         </div>
 
         <div class="mb-4">
             <label class="block font-bold mb-2" for="images">Images:</label>
-            <input type="file" name="images" id="images" class="border border-gray-300 rounded p-2 w-full" multiple>
+            <input type="file" name="images" id="images" class="border border-gray-300 rounded p-2 w-full outline-none" multiple>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="bedrooms">Bedrooms:</label>
-                <input type="number" name="bedrooms" id="bedrooms" class="border border-gray-300 rounded p-2 w-full"
-                    required>
+                <input type="number" name="bedrooms" id="bedrooms" class="border border-gray-300 rounded p-2 w-full outline-none"
+                    required value="1">
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="bathrooms">Bathrooms:</label>
-                <input type="number" name="bathrooms" id="bathrooms" class="border border-gray-300 rounded p-2 w-full"
-                    required>
+                <input type="number" name="bathrooms" id="bathrooms" class="border border-gray-300 rounded p-2 w-full outline-none"
+                    required value="1">
             </div>
         </div>
 
         <div class="mb-4">
             <label class="block font-bold mb-2" for="description">Description:</label>
-            <textarea name="description" id="description" rows="5" class="border border-gray-300 rounded p-2 w-full"
-                required></textarea>
+            <textarea name="description" id="description" rows="5" class="border border-gray-300 rounded p-2 w-full outline-none"
+                required placeholder="Our Flat is a nice place to...."></textarea>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="kitchen">Kitchen:</label>
-                <input type="checkbox" name="kitchen" id="kitchen" class="border-gray-300 rounded" value="1">
+                <input type="checkbox" name="kitchen" id="kitchen" class="border-gray-300 rounded outline-none" value="1">
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="kitchen">Bachelor Allowed:</label>
-                <input type="checkbox" name="bachelor_allowed" id="bachelor_allowed" class="border-gray-300 rounded"
+                <input type="checkbox" name="bachelor_allowed" id="bachelor_allowed" class="border-gray-300 rounded outline-none"
                     value="1">
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="floor_number">Floor Number:</label>
                 <input type="number" name="floor_number" id="floor_number"
-                    class="border border-gray-300 rounded p-2 w-full" required>
+                    class="border border-gray-300 rounded p-2 w-full outline-none" value="2" required>
             </div>
         </div>
 
         <div class="mb-4">
-            <label class="block font-bold mb-2" for="condition">Condition:</label>
-            <select name="condition" id="condition" class="border border-gray-300 rounded p-2 w-full" required>
-                <option value="excellent">Excellent</option>
-                <option value="good">Good</option>
+            <label class="block font-bold mb-2" for="condition">Building Condition:</label>
+            <select name="condition" id="condition" class="border border-gray-300 rounded p-2 w-full outline-none" required>
+                <option value="excellent">New</option>
+                <option value="good">renovated</option>
                 <option value="average">Average</option>
             </select>
         </div>
-
         <h2 class="text-xl font-bold mb-4">Features/Amenities</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="electricity">Electricity:</label>
-                <input type="checkbox" name="electricity" id="electricity" class="border-gray-300 rounded" value="1">
+                <input type="checkbox" name="electricity" id="electricity" class="border-gray-300 rounded " value="1" checked>
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="gas">Gas:</label>
-                <input type="checkbox" name="gas" id="gas" class="border-gray-300 rounded" value="1">
+                <input type="checkbox" name="gas" id="gas" class="border-gray-300 rounded" value="1" checked>
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="wifi">Wifi:</label>
-                <input type="checkbox" name="wifi" id="wifi" class="border-gray-300 rounded" value="1">
+                <input type="checkbox" name="wifi" id="wifi" class="border-gray-300 rounded" value="1" checked>
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="elevator">Elevator:</label>
@@ -156,7 +155,7 @@
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="security_guard">Security Guard:</label>
                 <input type="checkbox" name="security_guard" id="security_guard" class="border-gray-300 rounded"
-                    value="1">
+                    value="1" checked>
             </div>
             <div class="mb-4">
                 <label class="block font-bold mb-2" for="cctv">CCTV:</label>

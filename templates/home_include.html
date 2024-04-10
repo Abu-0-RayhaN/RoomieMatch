@@ -8,8 +8,8 @@
         <br class="hidden md:inline lg:hidden ">We provide a complete service for renting or buying real estate properties.
       </p>
       <div class="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start text-center">
-        <a rel="noopener noreferrer" href="#" class="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900 bg-blue-600 hover:bg-blue-500 text-white center uppercase">Post An Ad</a>
-        <a rel="noopener noreferrer" href="#" class="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100 bg-gray-900 text-white hover:bg-gray-700 uppercase">Browse Ads</a>
+        <a rel="noopener noreferrer" href="{% url 'create_ad' %}" class="px-8 py-3 text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900 bg-blue-600 hover:bg-blue-500 text-white center uppercase">Post An Ad</a>
+        <a rel="noopener noreferrer" href="{% url 'rental_home' %}" class="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100 bg-gray-900 text-white hover:bg-gray-700 uppercase">Browse Ads</a>
       </div>
     </div>
     <div class="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 w-full">
