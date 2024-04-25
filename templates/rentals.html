@@ -1,66 +1,64 @@
 {% extends "index.html" %}
+
 {% block content %}
-<!-- Filtering options -->
-<form action="{% url 'rental_home' %}" method="GET" class="mb-4">
-    <div class="flex items-center">
-        <label for="bachelor_allowed" class="mr-2">Bachelor Allowed:</label>
-        <select name="bachelor_allowed" id="bachelor_allowed" class="border border-gray-300 rounded-md p-1">
-            <option value="">All</option>
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-        </select>
-    </div>
-
-    <div class="flex items-center mt-2">
-        <label for="district" class="mr-2">District:</label>
-        <select name="district" id="district" class="border border-gray-300 rounded-md p-1">
-            <option value="">All</option>
-            {% for district in districts %}
-            <option value="{{ district.name }}">{{ district.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-
-    <button type="submit"
-        class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Filter</button>
-</form>
-
-<div> <a href="{% url 'create_ad'  %}" class="text-red-500 text-lg hover:text-2xl bg-slate-500">Post Ad</a> </div>
-
-<!-- Display property ads -->
-<div class="flex flex-wrap">
-    {% for property in properties %}
-    <div class="{% if property.negotiable %}w-1/2{% else %}w-full{% endif %} md:w-1/2 p-2">
-        <a href="{% url 'view_single_property' slug=property.title_slug %}">
-            <div class="border border-gray-300 rounded-md p-4 mb-4">
-                <!-- Property details -->
-                <h3 class="text-xl font-semibold mb-2">{{ property.title }}</h3>
-                <p class="text-gray-600 mb-2">District: {{ property.district }}</p>
-
-                <!-- User-uploaded image -->
-                {% with property.propertyimage_set.first as first_image %}
-                {% if first_image %}
-                <div class="w-full h-auto rounded-md overflow-hidden">
-                    <img src="{{ first_image.image.url }}" alt="Property Image"
-                        class="w-full h-auto rounded-md object-cover">
-                </div>
-                {% endif %}
-                {% endwith %}
-
-                <p class="text-gray-600 mb-2">Rent: {{ property.rent }}</p>
-                {% if property.negotiable %}
-                <p class="text-gray-600 mb-2">Negotiable: Yes</p>
-                {% else %}
-                <p class="text-gray-600 mb-2">Negotiable: No</p>
-                {% endif %}
-                <!-- Add other property details as needed -->
+    <div class="lg:px-20 md:px-10 px-5">
+        <!-- Filtering options -->
+        <form action="{% url 'rental_home' %}" method="GET" class="mb-4">
+            <div class="flex items-center">
+                <label for="bachelor_allowed" class="mr-2">Bachelor Allowed:</label>
+                <select name="bachelor_allowed" id="bachelor_allowed" class="border border-gray-300 rounded-md p-1">
+                    <option value="">All</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
             </div>
-        </a>
+
+            <div class="flex items-center mt-2">
+                <label for="district" class="mr-2">District:</label>
+                <select name="district" id="district" class="border border-gray-300 rounded-md p-1">
+                    <option value="">All</option>
+                    {% for district in districts %}
+                        <option value="{{ district.name }}">{{ district.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Filter</button>
+        </form>
+
+        <div>
+            <a href="{% url 'create_ad'  %}" class="text-red-500 text-lg hover:text-2xl bg-slate-500">Post Ad</a>
+        </div>
+
+        <!-- Display property ads -->
+        <div class="flex flex-wrap">
+            {% for property in properties %}
+                <div class="{% if property.negotiable %}w-1/2{% else %}w-full{% endif %} md:w-1/2 p-2">
+                    <a href="{% url 'view_single_property' slug=property.title_slug %}">
+                        <div class="border border-gray-300 rounded-md p-4 mb-4">
+                            <!-- User-uploaded image -->
+                            {% with property.propertyimage_set.first as first_image %}
+                                {% if first_image %}
+                                    <div class="w-h-full h-auto rounded-md overflow-hidden">
+                                        <img src="{{ first_image.image.url }}" alt="Property Image" class="rounded-md object-cover w-full" style="height:250px;">
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                            <h3 class="text-xl font-semibold mb-4">{{ property.title }}</h3>
+                            <p class="text-gray-600 mb-2">Rent: {{ property.rent }}</p>
+                            <p class="text-gray-600 mb-2">District: {{ property.district }}</p>
+                            {% if property.negotiable %}
+                                <p class="text-gray-600 mb-2">Negotiable: Yes</p>
+                            {% else %}
+                                <p class="text-gray-600 mb-2">Negotiable: No</p>
+                            {% endif %}
+                            <!-- Add other property details as needed -->
+                        </div>
+                    </a>
+                </div>
+            {% empty %}
+                <p class="text-gray-600">No property ads available.</p>
+            {% endfor %}
+        </div>
     </div>
-    {% empty %}
-    <p class="text-gray-600">No property ads available.</p>
-    {% endfor %}
-</div>
-
-
 {% endblock content %}
